@@ -1,0 +1,40 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-cluster01
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: secret-cluster01
+type: kubernetes.io/basic-auth
+stringData:
+  username: admin # required field for kubernetes.io/basic-auth
+  password: t0p-Secret # required field for kubernetes.io/basic-auth
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-cluster01
+data:
+  username: k8s-admin
+  access_level: "1"
