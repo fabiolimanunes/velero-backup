@@ -1,0 +1,15 @@
+velero install \
+ - provider aws \
+ - plugins velero/velero-plugin-for-aws:v1.2.1 \
+ - bucket velero-backup \
+ - secret-file ./credentials-velero \
+ - use-volume-snapshots=false \
+ - backup-location-config region=minio,s3ForcePathStyle="true",s3Url=http://http://10.0.0.112:9000
+
+
+ velero install \
+    --provider aws \
+    --bucket velero-backup \
+    --secret-file ./credentials-velero \
+    --use-volume-snapshots=false \
+    --backup-location-config region=minio,s3ForcePathStyle="true",s3Url=http://minio.velero.svc:9000
