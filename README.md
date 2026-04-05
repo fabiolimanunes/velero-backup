@@ -105,3 +105,4 @@ velero restore create --from-backup bkp-cluster-kind01
  - [MinIO](https://min.io/docs/minio/container/index.html#quickstart-for-containers)
  - [Velero](https://velero.io/docs/v1.0.0/get-started/)
  - https://mouliveera.medium.com/part-1-velero-setup-with-minikube-and-minio-2412514ce9c2
+ - Testando
